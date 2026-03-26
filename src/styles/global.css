@@ -36,11 +36,12 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  /* 1.2rem ≈ 19px — comfortable for elderly readers */
   font-size: 1.2rem;
-  /* Slightly heavier rendering — helps thin fonts on OLED screens */
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
+  /* 500 renders noticeably heavier on iPhone OLED — no glasses needed */
+  font-weight: 500;
+  /* subpixel-antialiased keeps full stroke weight on Apple screens;
+     antialiased thins fonts and makes them harder to read */
+  -webkit-font-smoothing: subpixel-antialiased;
   line-height: 1.85;
   min-height: 100vh;
   overflow-x: hidden;
@@ -384,8 +385,8 @@ section {
 
 .section-body {
   color: var(--text-secondary);
-  /* 1.15rem ≈ 18–19px — comfortable without glasses for most elderly readers */
   font-size: 1.15rem;
+  font-weight: 500;
   line-height: 1.9;
 }
 
@@ -405,6 +406,7 @@ section {
   color: var(--text-secondary);
   margin-bottom: 1rem;
   font-size: 1.1rem;
+  font-weight: 500;
   line-height: 1.8;
 }
 
@@ -615,6 +617,7 @@ section {
 
 .teaser-text {
   font-size: 1.4rem;
+  font-weight: 500;
   color: var(--text-secondary);
   line-height: 1.85;
   font-style: italic;
