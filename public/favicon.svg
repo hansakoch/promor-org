@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" fill="#0a0806"/>
+  <!-- Cross -->
+  <rect x="29" y="8" width="6" height="48" fill="#c9aa5d"/>
+  <rect x="12" y="22" width="40" height="6" fill="#c9aa5d"/>
+  <!-- Small wax seal circle bottom -->
+  <circle cx="32" cy="52" r="4" fill="#8b0000" opacity="0.8"/>
+</svg>
