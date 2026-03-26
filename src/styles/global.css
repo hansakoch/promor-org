@@ -585,14 +585,6 @@ section {
   border-radius: 50%;
   background: var(--red);
 }
-}
-
-.scroll-verdict strong {
-  font-style: normal;
-  color: var(--red);
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
-}
 
 /* ===== Teaser Section ===== */
 .teaser {
