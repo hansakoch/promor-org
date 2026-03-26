@@ -43,36 +43,43 @@ import '../styles/global.css';
     <div class="container">
       <div class="gallery-grid">
 
-        <!-- Image 1: Historical Vatican debate illustration -->
+        <!-- Image 1: Historical Vatican debate — Gutenberg public domain JPG -->
         <div class="gallery-item">
           <img
             src="https://www.gutenberg.org/cache/epub/73559/images/i_f004.jpg"
             alt="Historical Vatican courtroom — robed theologians in solemn doctrinal debate"
             loading="lazy"
+            decoding="async"
             width="600"
-            height="400"
+            height="375"
           />
           <span class="gallery-caption">Congregatio pro Causis Sanctorum · c. XVII</span>
         </div>
 
-        <!-- Image 2: Raphael Disputa (local SVG — always loads) -->
+        <!-- Image 2: Raphael Disputa — local SVG, always loads, zero bandwidth cost -->
         <div class="gallery-item">
           <img
             src="/images/raphael-disputa.svg"
             alt="Disputation of the Holy Sacrament — theologians and saints assembled before the Blessed Sacrament, after Raphael"
+            loading="lazy"
+            decoding="async"
             width="800"
             height="500"
+            fetchpriority="low"
           />
           <span class="gallery-caption">Disputatio de Eucharistia · Post Raphael, c. MDX</span>
         </div>
 
-        <!-- Image 3: Latin Vulgate Scripture parchment (local SVG — always loads) -->
+        <!-- Image 3: Latin Vulgate parchment — local SVG, always loads -->
         <div class="gallery-item">
           <img
             src="/images/latin-scripture.svg"
             alt="Biblia Sacra Vulgata — Latin sacred scripture, In principio erat Verbum, Saint John Chapter I"
+            loading="lazy"
+            decoding="async"
             width="800"
             height="500"
+            fetchpriority="low"
           />
           <span class="gallery-caption">Biblia Sacra Vulgata · Ioannes I · c. MCDLV</span>
         </div>

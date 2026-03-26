@@ -1,143 +1,176 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
-      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
-    </filter>
-    <radialGradient id="sky" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#2a1f10"/>
-      <stop offset="100%" stop-color="#0d0905"/>
+    <radialGradient id="sky" cx="50%" cy="28%" r="65%">
+      <stop offset="0%" stop-color="#3a2a12"/>
+      <stop offset="100%" stop-color="#140f06"/>
     </radialGradient>
-    <linearGradient id="arch" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#3d2e14"/>
-      <stop offset="100%" stop-color="#1a1208"/>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c9aa5d" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#c9aa5d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1408"/>
+      <stop offset="100%" stop-color="#0a0806"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
+  <!-- Sky background -->
   <rect width="800" height="500" fill="url(#sky)"/>
 
-  <!-- Architectural arch -->
-  <path d="M80,480 L80,180 Q400,40 720,180 L720,480 Z" fill="none" stroke="#8a6830" stroke-width="3" opacity="0.6"/>
-  <path d="M120,480 L120,200 Q400,70 680,200 L680,480 Z" fill="none" stroke="#6a5020" stroke-width="1.5" opacity="0.4"/>
+  <!-- Ambient glow at centre -->
+  <ellipse cx="400" cy="240" rx="320" ry="200" fill="url(#glow)"/>
 
-  <!-- Heavenly realm upper — cloud forms -->
-  <ellipse cx="400" cy="130" rx="180" ry="60" fill="#1e1608" opacity="0.7"/>
-  <ellipse cx="280" cy="150" rx="100" ry="40" fill="#1a1308" opacity="0.5"/>
-  <ellipse cx="520" cy="145" rx="110" ry="38" fill="#1a1308" opacity="0.5"/>
+  <!-- ===== ARCHITECTURAL ARCH ===== -->
+  <path d="M60,490 L60,175 Q400,20 740,175 L740,490 Z" fill="none" stroke="#c9aa5d" stroke-width="2.5" opacity="0.5"/>
+  <path d="M100,490 L100,195 Q400,52 700,195 L700,490 Z" fill="none" stroke="#a88840" stroke-width="1.2" opacity="0.35"/>
+  <!-- Arch inner relief lines -->
+  <path d="M140,490 L140,215 Q400,82 660,215 L660,490 Z" fill="none" stroke="#8a6828" stroke-width="0.8" opacity="0.25"/>
 
-  <!-- Dove / Holy Spirit symbol at apex -->
-  <ellipse cx="400" cy="115" rx="18" ry="8" fill="#c9aa5d" opacity="0.9"/>
-  <path d="M388,115 Q400,100 412,115" fill="#c9aa5d" opacity="0.7"/>
-  <!-- Rays from dove -->
-  <line x1="400" y1="107" x2="400" y2="75" stroke="#c9aa5d" stroke-width="1.5" opacity="0.5"/>
-  <line x1="392" y1="110" x2="370" y2="85" stroke="#c9aa5d" stroke-width="1" opacity="0.4"/>
-  <line x1="408" y1="110" x2="430" y2="85" stroke="#c9aa5d" stroke-width="1" opacity="0.4"/>
-  <line x1="386" y1="113" x2="355" y2="95" stroke="#c9aa5d" stroke-width="0.8" opacity="0.3"/>
-  <line x1="414" y1="113" x2="445" y2="95" stroke="#c9aa5d" stroke-width="0.8" opacity="0.3"/>
+  <!-- ===== HEAVENLY REALM — upper third ===== -->
+  <!-- Cloud mass -->
+  <ellipse cx="400" cy="125" rx="240" ry="70" fill="#241c0a" opacity="0.85"/>
+  <ellipse cx="260" cy="145" rx="130" ry="50" fill="#1e1608" opacity="0.7"/>
+  <ellipse cx="540" cy="140" rx="140" ry="48" fill="#1e1608" opacity="0.7"/>
+  <ellipse cx="155" cy="165" rx="90" ry="38" fill="#181208" opacity="0.55"/>
+  <ellipse cx="645" cy="160" rx="95" ry="38" fill="#181208" opacity="0.55"/>
 
-  <!-- Heavenly figures (upper tier) — stylized seated saints -->
-  <!-- Central enthroned Christ figure -->
-  <ellipse cx="400" cy="168" rx="14" ry="14" fill="#c9aa5d" opacity="0.5"/>
-  <rect x="390" y="180" width="20" height="35" rx="3" fill="#8a6020" opacity="0.6"/>
-  <path d="M382,215 Q400,225 418,215" fill="#6a4818" opacity="0.5"/>
+  <!-- DOVE / Holy Spirit — bright -->
+  <ellipse cx="400" cy="108" rx="22" ry="9" fill="#e8cc85" opacity="1"/>
+  <path d="M386,108 Q400,90 414,108" fill="#e8cc85" opacity="0.9"/>
+  <circle cx="400" cy="104" r="4" fill="#fff8e0" opacity="0.8"/>
 
-  <!-- Left heavenly figure -->
-  <ellipse cx="320" cy="172" rx="10" ry="10" fill="#c9aa5d" opacity="0.4"/>
-  <rect x="313" y="181" width="14" height="28" rx="2" fill="#6a5020" opacity="0.5"/>
-
-  <!-- Right heavenly figure -->
-  <ellipse cx="480" cy="172" rx="10" ry="10" fill="#c9aa5d" opacity="0.4"/>
-  <rect x="473" y="181" width="14" height="28" rx="2" fill="#6a5020" opacity="0.5"/>
-
-  <!-- More upper-tier figures -->
-  <ellipse cx="250" cy="178" rx="9" ry="9" fill="#c9aa5d" opacity="0.3"/>
-  <rect x="244" y="186" width="12" height="24" rx="2" fill="#5a4418" opacity="0.4"/>
-  <ellipse cx="550" cy="178" rx="9" ry="9" fill="#c9aa5d" opacity="0.3"/>
-  <rect x="544" y="186" width="12" height="24" rx="2" fill="#5a4418" opacity="0.4"/>
-
-  <!-- Monstrance / Blessed Sacrament on altar (center ground level) -->
-  <rect x="385" y="340" width="30" height="60" rx="2" fill="#6a5020" opacity="0.7"/>
-  <circle cx="400" cy="320" r="28" fill="none" stroke="#c9aa5d" stroke-width="2.5" opacity="0.8"/>
-  <circle cx="400" cy="320" r="20" fill="#2a1e0a" stroke="#c9aa5d" stroke-width="1.5" opacity="0.8"/>
-  <circle cx="400" cy="320" r="10" fill="#c9aa5d" opacity="0.6"/>
-  <!-- Monstrance rays -->
-  <g stroke="#c9aa5d" stroke-width="1.2" opacity="0.6">
-    <line x1="400" y1="292" x2="400" y2="278"/>
-    <line x1="400" y1="348" x2="400" y2="362"/>
-    <line x1="372" y1="320" x2="358" y2="320"/>
-    <line x1="428" y1="320" x2="442" y2="320"/>
-    <line x1="380" y1="300" x2="370" y2="290"/>
-    <line x1="420" y1="300" x2="430" y2="290"/>
-    <line x1="380" y1="340" x2="370" y2="350"/>
-    <line x1="420" y1="340" x2="430" y2="350"/>
+  <!-- Rays from dove — bright gold -->
+  <g stroke="#c9aa5d" opacity="0.85">
+    <line x1="400" y1="99"  x2="400" y2="62"  stroke-width="2"/>
+    <line x1="391" y1="103" x2="366" y2="74"  stroke-width="1.5"/>
+    <line x1="409" y1="103" x2="434" y2="74"  stroke-width="1.5"/>
+    <line x1="384" y1="107" x2="350" y2="84"  stroke-width="1.2"/>
+    <line x1="416" y1="107" x2="450" y2="84"  stroke-width="1.2"/>
+    <line x1="378" y1="110" x2="336" y2="96"  stroke-width="1"/>
+    <line x1="422" y1="110" x2="464" y2="96"  stroke-width="1"/>
   </g>
 
-  <!-- Altar cloth -->
-  <rect x="320" y="398" width="160" height="12" rx="1" fill="#3a2a10" opacity="0.8"/>
-  <rect x="315" y="408" width="170" height="6" rx="1" fill="#2a1e08" opacity="0.6"/>
-  <!-- Altar cross decoration -->
-  <line x1="400" y1="400" x2="400" y2="407" stroke="#c9aa5d" stroke-width="1" opacity="0.5"/>
-  <line x1="396" y1="403" x2="404" y2="403" stroke="#c9aa5d" stroke-width="1" opacity="0.5"/>
+  <!-- Enthroned Christ — centre upper -->
+  <circle cx="400" cy="162" r="17" fill="#c9aa5d" opacity="0.95"/>
+  <circle cx="400" cy="162" r="13" fill="#f0d87a" opacity="0.7"/>
+  <!-- Halo cross -->
+  <line x1="400" y1="148" x2="400" y2="176" stroke="#8b0000" stroke-width="2.5" opacity="0.9"/>
+  <line x1="386" y1="162" x2="414" y2="162" stroke="#8b0000" stroke-width="2.5" opacity="0.9"/>
+  <!-- Robe -->
+  <path d="M386,178 Q400,188 414,178 L418,220 Q400,228 382,220 Z" fill="#8a6020" opacity="0.9"/>
+  <path d="M382,220 Q400,230 418,220 L420,240 Q400,248 380,240 Z" fill="#6a4818" opacity="0.8"/>
 
-  <!-- Ground level disputants — left group -->
-  <!-- Figure 1 far left standing, gesturing -->
-  <ellipse cx="155" cy="340" rx="11" ry="11" fill="#c9aa5d" opacity="0.45"/>
-  <path d="M148,350 L148,410 L162,410 L162,350 Z" rx="3" fill="#4a3818" opacity="0.6"/>
-  <path d="M148,375 L130,365" stroke="#5a4020" stroke-width="3" opacity="0.5"/>
-  <!-- Figure 2 -->
-  <ellipse cx="200" cy="338" rx="11" ry="11" fill="#c9aa5d" opacity="0.4"/>
-  <path d="M193,348 L193,415 L207,415 L207,348 Z" fill="#3a2c12" opacity="0.6"/>
-  <!-- Figure 3 (kneeling) -->
-  <ellipse cx="255" cy="355" rx="10" ry="10" fill="#c9aa5d" opacity="0.4"/>
-  <path d="M248,364 L248,400 L262,400 L262,364 Z" fill="#5a4020" opacity="0.55"/>
-  <!-- Open book in hands -->
-  <rect x="240" y="385" width="25" height="16" rx="1" fill="#e8d5a0" opacity="0.5"/>
-  <line x1="252" y1="385" x2="252" y2="401" stroke="#8a7040" stroke-width="0.8" opacity="0.6"/>
+  <!-- Left upper saint -->
+  <circle cx="312" cy="168" r="12" fill="#c9aa5d" opacity="0.85"/>
+  <path d="M302,179 Q312,188 322,179 L325,215 Q312,222 299,215 Z" fill="#5a4018" opacity="0.85"/>
+  <!-- Right upper saint -->
+  <circle cx="488" cy="168" r="12" fill="#c9aa5d" opacity="0.85"/>
+  <path d="M478,179 Q488,188 498,179 L501,215 Q488,222 475,215 Z" fill="#5a4018" opacity="0.85"/>
 
-  <!-- Ground level disputants — right group -->
-  <!-- Figure 4 -->
-  <ellipse cx="545" cy="338" rx="11" ry="11" fill="#c9aa5d" opacity="0.4"/>
-  <path d="M538,348 L538,415 L552,415 L552,348 Z" fill="#3a2c12" opacity="0.6"/>
-  <!-- Book in hands -->
-  <rect x="530" y="378" width="24" height="16" rx="1" fill="#e8d5a0" opacity="0.5"/>
-  <line x1="542" y1="378" x2="542" y2="394" stroke="#8a7040" stroke-width="0.8" opacity="0.6"/>
-  <!-- Figure 5 gesturing -->
-  <ellipse cx="600" cy="340" rx="11" ry="11" fill="#c9aa5d" opacity="0.45"/>
-  <path d="M593,350 L593,412 L607,412 L607,350 Z" fill="#4a3818" opacity="0.6"/>
-  <path d="M607,370 L625,360" stroke="#5a4020" stroke-width="3" opacity="0.5"/>
-  <!-- Figure 6 far right -->
-  <ellipse cx="645" cy="338" rx="10" ry="10" fill="#c9aa5d" opacity="0.4"/>
-  <path d="M638,348 L638,415 L652,415 L652,348 Z" fill="#3a2c12" opacity="0.55"/>
+  <!-- Further upper figures — left -->
+  <circle cx="234" cy="175" r="10" fill="#c9aa5d" opacity="0.75"/>
+  <path d="M226,185 L226,218 L242,218 L242,185 Z" fill="#4a3414" opacity="0.75"/>
+  <circle cx="170" cy="182" r="9" fill="#b89840" opacity="0.65"/>
+  <path d="M163,190 L163,220 L177,220 L177,190 Z" fill="#3a2a10" opacity="0.65"/>
 
-  <!-- Steps / Podium -->
-  <rect x="200" y="418" width="400" height="8" rx="1" fill="#2a2010" opacity="0.7"/>
-  <rect x="170" y="425" width="460" height="8" rx="1" fill="#221a0c" opacity="0.6"/>
-  <rect x="140" y="432" width="520" height="8" rx="1" fill="#1a1408" opacity="0.5"/>
+  <!-- Further upper figures — right -->
+  <circle cx="566" cy="175" r="10" fill="#c9aa5d" opacity="0.75"/>
+  <path d="M558,185 L558,218 L574,218 L574,185 Z" fill="#4a3414" opacity="0.75"/>
+  <circle cx="630" cy="182" r="9" fill="#b89840" opacity="0.65"/>
+  <path d="M623,190 L623,220 L637,220 L637,190 Z" fill="#3a2a10" opacity="0.65"/>
+
+  <!-- ===== MONSTRANCE / BLESSED SACRAMENT ===== -->
+  <!-- Pedestal -->
+  <rect x="388" y="340" width="24" height="68" rx="3" fill="#8a6820" opacity="0.9"/>
+  <rect x="376" y="398" width="48" height="10" rx="2" fill="#7a5c18" opacity="0.9"/>
+
+  <!-- Outer glory ring -->
+  <circle cx="400" cy="308" r="38" fill="none" stroke="#e8cc85" stroke-width="3" opacity="0.9"/>
+  <!-- Middle ring -->
+  <circle cx="400" cy="308" r="28" fill="#1a1408" stroke="#c9aa5d" stroke-width="2" opacity="0.95"/>
+  <!-- Host -->
+  <circle cx="400" cy="308" r="16" fill="#f0d87a" opacity="0.85"/>
+  <circle cx="400" cy="308" r="10" fill="#fff8d0" opacity="0.7"/>
+
+  <!-- Monstrance glory rays — bright -->
+  <g stroke="#e8cc85" stroke-width="2" opacity="0.9">
+    <line x1="400" y1="270" x2="400" y2="254"/>
+    <line x1="400" y1="346" x2="400" y2="362"/>
+    <line x1="362" y1="308" x2="346" y2="308"/>
+    <line x1="438" y1="308" x2="454" y2="308"/>
+    <line x1="373" y1="281" x2="362" y2="270"/>
+    <line x1="427" y1="281" x2="438" y2="270"/>
+    <line x1="373" y1="335" x2="362" y2="346"/>
+    <line x1="427" y1="335" x2="438" y2="346"/>
+  </g>
+  <!-- Secondary rays -->
+  <g stroke="#c9aa5d" stroke-width="1.2" opacity="0.65">
+    <line x1="385" y1="272" x2="378" y2="259"/>
+    <line x1="415" y1="272" x2="422" y2="259"/>
+    <line x1="385" y1="344" x2="378" y2="357"/>
+    <line x1="415" y1="344" x2="422" y2="357"/>
+  </g>
+
+  <!-- ===== ALTAR ===== -->
+  <rect x="310" y="408" width="180" height="14" rx="2" fill="#3a2c12" opacity="0.95"/>
+  <rect x="304" y="420" width="192" height="7"  rx="1" fill="#2a1e0a" opacity="0.9"/>
+  <!-- Altar cloth cross -->
+  <line x1="400" y1="410" x2="400" y2="420" stroke="#c9aa5d" stroke-width="1.5" opacity="0.7"/>
+  <line x1="394" y1="414" x2="406" y2="414" stroke="#c9aa5d" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- ===== GROUND-LEVEL DISPUTANTS — left group ===== -->
+  <!-- Figure A — kneeling, open book -->
+  <circle cx="200" cy="348" r="13" fill="#c9aa5d" opacity="0.9"/>
+  <path d="M189,360 Q200,368 211,360 L214,405 Q200,412 186,405 Z" fill="#5a4018" opacity="0.9"/>
+  <rect x="184" y="390" width="32" height="20" rx="2" fill="#e8d5a0" opacity="0.8"/>
+  <line x1="200" y1="390" x2="200" y2="410" stroke="#8a7040" stroke-width="1" opacity="0.7"/>
+  <!-- Figure B — standing, gesturing upward -->
+  <circle cx="258" cy="340" r="13" fill="#c9aa5d" opacity="0.9"/>
+  <path d="M247,352 Q258,360 269,352 L272,410 Q258,418 244,410 Z" fill="#4a3414" opacity="0.85"/>
+  <line x1="258" y1="360" x2="238" y2="330" stroke="#6a5020" stroke-width="3.5" opacity="0.8"/>
+  <!-- Figure C — standing, holding scroll -->
+  <circle cx="318" cy="336" r="13" fill="#c9aa5d" opacity="0.85"/>
+  <path d="M307,348 Q318,356 329,348 L332,415 Q318,422 304,415 Z" fill="#6a4c1c" opacity="0.85"/>
+  <rect x="308" y="370" width="20" height="28" rx="2" fill="#d4b870" opacity="0.75"/>
+
+  <!-- ===== GROUND-LEVEL DISPUTANTS — right group ===== -->
+  <!-- Figure D — holding open book -->
+  <circle cx="482" cy="336" r="13" fill="#c9aa5d" opacity="0.85"/>
+  <path d="M471,348 Q482,356 493,348 L496,415 Q482,422 468,415 Z" fill="#6a4c1c" opacity="0.85"/>
+  <rect x="472" y="368" width="32" height="20" rx="2" fill="#e8d5a0" opacity="0.8"/>
+  <line x1="488" y1="368" x2="488" y2="388" stroke="#8a7040" stroke-width="1" opacity="0.7"/>
+  <!-- Figure E — gesturing toward monstrance -->
+  <circle cx="542" cy="340" r="13" fill="#c9aa5d" opacity="0.9"/>
+  <path d="M531,352 Q542,360 553,352 L556,410 Q542,418 528,410 Z" fill="#4a3414" opacity="0.85"/>
+  <line x1="542" y1="356" x2="520" y2="340" stroke="#6a5020" stroke-width="3.5" opacity="0.8"/>
+  <!-- Figure F — kneeling in adoration -->
+  <circle cx="600" cy="348" r="13" fill="#c9aa5d" opacity="0.9"/>
+  <path d="M589,360 Q600,368 611,360 L613,405 Q600,412 587,405 Z" fill="#5a4018" opacity="0.9"/>
+
+  <!-- ===== STEPS ===== -->
+  <rect x="230" y="426" width="340" height="8"  rx="1" fill="#2a2010" opacity="0.85"/>
+  <rect x="200" y="433" width="400" height="7"  rx="1" fill="#221808" opacity="0.8"/>
+  <rect x="160" y="439" width="480" height="7"  rx="1" fill="#1a1408" opacity="0.7"/>
 
   <!-- Floor -->
-  <rect x="0" y="440" width="800" height="60" fill="#120f06" opacity="0.9"/>
+  <rect x="0" y="446" width="800" height="54" fill="#0e0c06"/>
+  <!-- Floor perspective lines -->
+  <line x1="80"  y1="500" x2="400" y2="450" stroke="#2a2010" stroke-width="1" opacity="0.5"/>
+  <line x1="720" y1="500" x2="400" y2="450" stroke="#2a2010" stroke-width="1" opacity="0.5"/>
+  <line x1="0"   y1="480" x2="800" y2="460" stroke="#2a2010" stroke-width="0.8" opacity="0.3"/>
 
-  <!-- Geometric floor pattern -->
-  <line x1="100" y1="480" x2="700" y2="455" stroke="#2a2010" stroke-width="1" opacity="0.4"/>
-  <line x1="100" y1="470" x2="700" y2="445" stroke="#2a2010" stroke-width="1" opacity="0.3"/>
+  <!-- ===== FRAME ===== -->
+  <rect x="6"  y="6"  width="788" height="488" fill="none" stroke="#c9aa5d" stroke-width="2" opacity="0.6"/>
+  <rect x="12" y="12" width="776" height="476" fill="none" stroke="#8a6828" stroke-width="1" opacity="0.35"/>
 
-  <!-- Grain overlay -->
-  <rect width="800" height="500" fill="#0a0805" opacity="0.25" filter="url(#grain)"/>
+  <!-- Corner cross ornaments -->
+  <text x="18" y="38"  font-size="20" fill="#c9aa5d" opacity="0.8" font-family="serif">✠</text>
+  <text x="758" y="38" font-size="20" fill="#c9aa5d" opacity="0.8" font-family="serif">✠</text>
+  <text x="18" y="492" font-size="20" fill="#c9aa5d" opacity="0.8" font-family="serif">✠</text>
+  <text x="758" y="492" font-size="20" fill="#c9aa5d" opacity="0.8" font-family="serif">✠</text>
 
-  <!-- Border frame -->
-  <rect x="8" y="8" width="784" height="484" fill="none" stroke="#5a4020" stroke-width="2" opacity="0.6"/>
-  <rect x="14" y="14" width="772" height="472" fill="none" stroke="#3a2810" stroke-width="1" opacity="0.4"/>
-
-  <!-- Corner ornaments -->
-  <text x="20" y="36" font-size="18" fill="#8a6030" opacity="0.7" font-family="serif">✠</text>
-  <text x="762" y="36" font-size="18" fill="#8a6030" opacity="0.7" font-family="serif">✠</text>
-  <text x="20" y="490" font-size="18" fill="#8a6030" opacity="0.7" font-family="serif">✠</text>
-  <text x="762" y="490" font-size="18" fill="#8a6030" opacity="0.7" font-family="serif">✠</text>
-
-  <!-- Caption text at bottom -->
-  <rect x="0" y="455" width="800" height="45" fill="rgba(0,0,0,0.6)"/>
-  <text x="400" y="478" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c9aa5d" letter-spacing="3" opacity="0.9">DISPUTATIO DE EUCHARISTIA · POST RAPHAEL SANZIO · c. MDX</text>
+  <!-- Caption bar -->
+  <rect x="0" y="456" width="800" height="44" fill="rgba(0,0,0,0.72)"/>
+  <text x="400" y="480" text-anchor="middle" font-family="Georgia,serif" font-size="12"
+        fill="#e8cc85" letter-spacing="3" opacity="0.95">DISPUTATIO DE EUCHARISTIA · POST RAPHAEL SANZIO · c. MDX</text>
 </svg>

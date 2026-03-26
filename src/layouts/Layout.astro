@@ -16,27 +16,35 @@ const {
 <html lang="la-x-trad" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- viewport: stops mobile browsers from zooming out; user-scalable=yes
+         keeps pinch-zoom working for accessibility (elderly users) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0806" />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / WhatsApp / Viber previews (common in Philippines) -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://promor.org/images/raphael-disputa.svg" />
 
-    <!-- Favicon: SVG cross / quill -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Google Fonts: Cinzel + Playfair Display -->
+    <!-- Google Fonts — low-bandwidth: load only weights actually used,
+         font-display=swap means text shows immediately in fallback font
+         while Cinzel downloads, no invisible text flash on slow 3G/LTE -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
       rel="stylesheet"
     />
+    <!-- Preload local images that appear above the fold -->
+    <link rel="preload" as="image" href="/images/raphael-disputa.svg" type="image/svg+xml" />
 
     <title>{title}</title>
   </head>

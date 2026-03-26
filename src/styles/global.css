@@ -280,19 +280,24 @@ section {
 
 .gallery-grid {
   display: grid;
+  /* Single column on phones — full width, no wasted space on 360px screens */
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
-@media (min-width: 640px) {
+/* Two columns from 600px (most mid-range PH phones in landscape) */
+@media (min-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 }
 
+/* Three columns on tablets/desktop */
 @media (min-width: 900px) {
   .gallery-grid {
     grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
   }
 }
 
@@ -300,20 +305,31 @@ section {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--bg-card-border);
+  /* Prevent cumulative layout shift — browser knows space before image loads */
+  aspect-ratio: 8 / 5;
+  background: var(--bg-card);
 }
 
 .gallery-item img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
   object-position: center top;
-  filter: sepia(30%) brightness(0.75) contrast(1.1);
-  transition: filter 0.4s ease, transform 0.4s ease;
+  /* Lighter sepia on mobile: SVG art needs full visibility at small size */
+  filter: sepia(20%) brightness(0.88) contrast(1.08);
+  /* No transition on mobile — saves battery and feels snappier on low-end devices */
+  display: block;
 }
 
-.gallery-item:hover img {
-  filter: sepia(10%) brightness(0.9) contrast(1.05);
-  transform: scale(1.03);
+/* Hover only on devices that support it (not touch) */
+@media (hover: hover) {
+  .gallery-item img {
+    transition: filter 0.35s ease, transform 0.35s ease;
+  }
+  .gallery-item:hover img {
+    filter: sepia(5%) brightness(1) contrast(1.04);
+    transform: scale(1.03);
+  }
 }
 
 .gallery-caption {
