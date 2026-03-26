@@ -36,8 +36,11 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  /* Base body text is 1.125rem (≈18px at default) — comfortable for elderly readers */
-  font-size: 1.125rem;
+  /* 1.2rem ≈ 19px — comfortable for elderly readers */
+  font-size: 1.2rem;
+  /* Slightly heavier rendering — helps thin fonts on OLED screens */
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.85;
   min-height: 100vh;
   overflow-x: hidden;
@@ -440,7 +443,7 @@ section {
   50% { opacity: 0; }
 }
 
-/* ===== AI Demo Scroll ===== */
+/* ===== Formal Examination Scroll ===== */
 .ai-demo-section {
   background: var(--bg-secondary);
   border-top: 1px solid var(--bg-card-border);
@@ -449,26 +452,24 @@ section {
 
 #ai-demo {
   position: relative;
-  background:
-    linear-gradient(135deg, #2a2010 0%, #1e1808 50%, #241c0a 100%);
-  border: 1px solid var(--gold-dim);
+  /* Light parchment — high contrast regardless of Night Mode or screen filter */
+  background: linear-gradient(160deg, #f2e4c4 0%, #ecdbb0 50%, #f0e2c0 100%);
+  border: 2px solid #8a6828;
   border-radius: 2px;
   padding: 2.5rem 2rem 2rem;
   max-width: 720px;
   margin: 0 auto;
   box-shadow:
-    0 0 0 1px rgba(201, 170, 93, 0.1),
-    0 8px 40px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(201, 170, 93, 0.08);
+    0 4px 24px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(255,255,255,0.4);
   font-family: var(--font-body);
-  color: #2a1a08;
 }
 
 #ai-demo::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
   pointer-events: none;
   border-radius: 2px;
 }
@@ -488,7 +489,7 @@ section {
   font-size: 1rem;
   color: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  border: 2px solid rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
 }
 
 .scroll-heading {
@@ -496,7 +497,8 @@ section {
   font-size: 0.8rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold-dim);
+  /* Dark gold on light parchment — readable */
+  color: #6a4e18;
   text-align: center;
   margin-bottom: 1.2rem;
 }
@@ -506,8 +508,10 @@ section {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1.2rem;
-  color: var(--gold-dim);
-  font-size: 0.85rem;
+  color: #7a5c20;
+  font-size: 0.9rem;
+  font-family: var(--font-serif);
+  letter-spacing: 0.2em;
 }
 
 .scroll-ruling::before,
@@ -515,45 +519,51 @@ section {
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--gold-dim);
-  opacity: 0.4;
+  background: #8a6828;
+  opacity: 0.5;
 }
 
 .scroll-title {
   font-family: var(--font-serif);
   font-size: 1.15rem;
-  color: #5a3a10;
+  /* Near-black on parchment — maximum contrast */
+  color: #1a1208;
   margin-bottom: 0.85rem;
   font-weight: 700;
 }
 
 .scroll-verdict {
   font-size: 1.15rem;
-  color: #3a2008;
-  line-height: 1.85;
-  font-style: italic;
+  /* Dark charcoal — high contrast on parchment, survives Night Mode */
+  color: #1e1408;
+  line-height: 1.9;
+  /* Remove italic — heavier, easier to read on mobile */
+  font-style: normal;
+  font-weight: 400;
 }
 
 .scroll-verdict strong {
   font-style: normal;
-  color: var(--red);
+  color: #8b0000;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .scroll-cite {
   display: block;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   font-size: 0.9rem;
-  color: #6a4a20;
+  color: #5a3e12;
   text-align: right;
   font-style: normal;
   letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .scroll-footer-rule {
   border: none;
-  border-top: 1px solid rgba(90, 60, 16, 0.3);
+  border-top: 1px solid rgba(90, 60, 16, 0.4);
   margin: 1.2rem 0 0.8rem;
 }
 
@@ -565,7 +575,7 @@ section {
   font-size: 0.85rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #8a6030;
+  color: #6a4e18;
   font-family: var(--font-serif);
 }
 
@@ -574,6 +584,14 @@ section {
   height: 5px;
   border-radius: 50%;
   background: var(--red);
+}
+}
+
+.scroll-verdict strong {
+  font-style: normal;
+  color: var(--red);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
 }
 
 /* ===== Teaser Section ===== */
