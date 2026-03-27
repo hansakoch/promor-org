@@ -44,7 +44,12 @@ import '../styles/global.css';
       <div class="gallery-grid">
 
         <!-- Image 1: Historical Vatican debate — Gutenberg public domain JPG -->
-        <div class="gallery-item">
+        <div class="gallery-item"
+          role="button" tabindex="0"
+          data-src="https://www.gutenberg.org/cache/epub/73559/images/i_f004.jpg"
+          data-alt="Historical Vatican courtroom — robed theologians in solemn doctrinal debate"
+          data-caption="Congregatio pro Causis Sanctorum · c. XVII"
+          aria-label="View full size: Congregatio pro Causis Sanctorum">
           <img
             src="https://www.gutenberg.org/cache/epub/73559/images/i_f004.jpg"
             alt="Historical Vatican courtroom — robed theologians in solemn doctrinal debate"
@@ -57,7 +62,12 @@ import '../styles/global.css';
         </div>
 
         <!-- Image 2: Raphael Disputa — local SVG, always loads, zero bandwidth cost -->
-        <div class="gallery-item">
+        <div class="gallery-item"
+          role="button" tabindex="0"
+          data-src="/images/raphael-disputa.svg"
+          data-alt="Disputation of the Holy Sacrament — theologians and saints assembled before the Blessed Sacrament, after Raphael"
+          data-caption="Disputatio de Eucharistia · Post Raphael, c. MDX"
+          aria-label="View full size: Disputatio de Eucharistia">
           <img
             src="/images/raphael-disputa.svg"
             alt="Disputation of the Holy Sacrament — theologians and saints assembled before the Blessed Sacrament, after Raphael"
@@ -71,7 +81,12 @@ import '../styles/global.css';
         </div>
 
         <!-- Image 3: Latin Vulgate parchment — local SVG, always loads -->
-        <div class="gallery-item">
+        <div class="gallery-item"
+          role="button" tabindex="0"
+          data-src="/images/latin-scripture.svg"
+          data-alt="Biblia Sacra Vulgata — Latin sacred scripture, In principio erat Verbum, Saint John Chapter I"
+          data-caption="Biblia Sacra Vulgata · Ioannes I · c. MCDLV"
+          aria-label="View full size: Biblia Sacra Vulgata">
           <img
             src="/images/latin-scripture.svg"
             alt="Biblia Sacra Vulgata — Latin sacred scripture, In principio erat Verbum, Saint John Chapter I"
@@ -220,7 +235,62 @@ import '../styles/global.css';
     </div>
   </footer>
 
+  <!-- ===== LIGHTBOX ===== -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Full size image viewer">
+    <button id="lightbox-close" aria-label="Close image">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+    <span id="lightbox-caption"></span>
+  </div>
+
 </Layout>
+
+<!-- ===== LIGHTBOX SCRIPT ===== -->
+<script is:inline>
+(function () {
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  var lbCap = document.getElementById('lightbox-caption');
+  var lbClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt, caption) {
+    lbImg.src = src;
+    lbImg.alt = alt;
+    lbCap.textContent = caption || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+
+  function closeLightbox() {
+    lb.classList.remove('open');
+    lbImg.src = '';
+    document.body.style.overflow = '';
+  }
+
+  // Click on gallery items
+  document.querySelectorAll('.gallery-item[data-src]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      openLightbox(el.dataset.src, el.dataset.alt, el.dataset.caption);
+    });
+    // Keyboard: Enter or Space
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(el.dataset.src, el.dataset.alt, el.dataset.caption);
+      }
+    });
+  });
+
+  // Close on button, backdrop click, or Escape key
+  lbClose.addEventListener('click', closeLightbox);
+  lb.addEventListener('click', function (e) {
+    if (e.target === lb) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
 
 <!-- ===== INTERNATIONALISATION ===== -->
 <script is:inline>
